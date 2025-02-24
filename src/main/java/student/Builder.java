@@ -22,11 +22,29 @@ public final class Builder {
      * @return the employee object
      */
     public static IEmployee buildEmployeeFromCSV(String csv) {
+        String [] parts = csv.split(",");
+        if(parts.length != 7){
+            throw new IllegalArgumentException(
+                String.format("Invalid array length: expected 7, but got %d", parts.length)
+            );
+        }
 
-        return null;
+        EmployeeType type = EmployeeType.valueOf(parts[0]);
+        String name = parts[1];
+        String id = parts[2];
+        double payRate = Double.parseDouble(parts[3]);
+        double pretaxDeductions = Double.parseDouble(parts[4]);
+        double YTDEarnings = Double.parseDouble(parts[5]);
+        double YTDTaxesPaid = Double.parseDouble(parts[6]);
+
+        if ( type == EmployeeType.HOURLY){
+            return new HourlyEmployee(name, id, payRate, YTDEarnings, YTDTaxesPaid, pretaxDeductions);
+        } else if (type == EmployeeType.SALARY){
+            return new SalaryEmployee(name, id, payRate, YTDEarnings, YTDTaxesPaid, pretaxDeductions);
+        } else {
+            return null;
+        }
     }
-
-
 
    /**
      * Converts a TimeCard from a CSV String.
@@ -34,8 +52,16 @@ public final class Builder {
      * @param csv csv string
      * @return a TimeCard object
      */
-    public static ITimeCard buildTimeCardFromCSV(String csv) {
-    
-        return null;
+   public static ITimeCard buildTimeCardFromCSV(String csv) {
+        String [] parts = csv.split(",");
+        if(parts.length != 2){
+            throw new IllegalArgumentException(
+                    String.format("Invalid array length: expected 2, but got %d", parts.length)
+            );
+        }
+        String id = parts[0];
+        double hoursWorked = Double.parseDouble(parts[1]);
+
+        return new TimeCard(id, hoursWorked);
     }
 }
