@@ -2,19 +2,42 @@ package student;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class SalaryEmployee extends AbstractEmployee{
+/**
+ * Represents a salaried employee who earns a fixed amount per pay period.
+ */
+public class SalaryEmployee extends AbstractEmployee {
+    /**
+     * Stores the calculated gross pay amount.
+     */
     double grossPay;
-    public SalaryEmployee(String name, String id, double payRate, double YTDEarnings, double YTDTaxesPaid, double pretaxDeductions){
+
+    /**
+     * Constructs a salaried employee with the specified attributes.
+     *
+     * @param name             Employee name
+     * @param id               Employee ID
+     * @param payRate          Pay rate (annual salary)
+     * @param YTDEarnings      Year-to-date earnings
+     * @param YTDTaxesPaid     Year-to-date taxes paid
+     * @param pretaxDeductions Pretax deductions
+     */
+    public SalaryEmployee(String name, String id, double payRate, double YTDEarnings, double YTDTaxesPaid, double pretaxDeductions) {
         super(name, id, payRate, YTDEarnings, YTDTaxesPaid, pretaxDeductions);
-    };
+    }
+
+    /**
+     * Returns the type of this employee.
+     *
+     * @return The string "SALARY" indicating the employee type
+     */
+    @Override
+    public String getEmployeeType() {
+        return "SALARY";
+    }
 
     @Override
-    public String getEmployeeType(){return "SALARY";};
-
-
-    @Override
-    protected double calculateGrossPay(double hoursWorked){
-        if (hoursWorked == 0){
+    protected double calculateGrossPay(double hoursWorked) {
+        if (hoursWorked == 0) {
             grossPay = 0;
         } else {
             grossPay = this.getPayRate() / SALARY_PAY_PERIODS;
@@ -25,4 +48,12 @@ public class SalaryEmployee extends AbstractEmployee{
         return grossPay;
     }
 
-};
+    /**
+     * Gets the gross pay amount.
+     *
+     * @return The gross pay amount
+     */
+    public double getGrossPay() {
+        return grossPay;
+    }
+}
