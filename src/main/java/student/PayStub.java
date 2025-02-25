@@ -120,3 +120,4 @@ public class PayStub implements IPayStub {
         return formatted;
     }
 }
+

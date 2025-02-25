@@ -9,7 +9,7 @@ public class SalaryEmployee extends AbstractEmployee {
     /**
      * Stores the calculated gross pay amount.
      */
-    double grossPay;
+    private double grossPay;
 
     /**
      * Constructs a salaried employee with the specified attributes.
@@ -17,12 +17,13 @@ public class SalaryEmployee extends AbstractEmployee {
      * @param name             Employee name
      * @param id               Employee ID
      * @param payRate          Pay rate (annual salary)
-     * @param YTDEarnings      Year-to-date earnings
-     * @param YTDTaxesPaid     Year-to-date taxes paid
+     * @param ytdEarnings      Year-to-date earnings
+     * @param ytdTaxesPaid     Year-to-date taxes paid
      * @param pretaxDeductions Pretax deductions
      */
-    public SalaryEmployee(String name, String id, double payRate, double YTDEarnings, double YTDTaxesPaid, double pretaxDeductions) {
-        super(name, id, payRate, YTDEarnings, YTDTaxesPaid, pretaxDeductions);
+    public SalaryEmployee(String name, String id, double payRate, double ytdEarnings,
+                          double ytdTaxesPaid, double pretaxDeductions) {
+        super(name, id, payRate, ytdEarnings, ytdTaxesPaid, pretaxDeductions);
     }
 
     /**
@@ -57,3 +58,4 @@ public class SalaryEmployee extends AbstractEmployee {
         return grossPay;
     }
 }
+
