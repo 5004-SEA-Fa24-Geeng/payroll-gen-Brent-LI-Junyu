@@ -10,7 +10,7 @@ How many hours did it take you to complete this assignment (estimate)?
 
 Did you collaborate with any other students/TAs/Professors? If so, tell us who and in what
 capacity.
-Tiantian Wang
+Tiantian Huang
 
 * one per row, add more if needed
 
